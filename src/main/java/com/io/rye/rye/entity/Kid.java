@@ -66,4 +66,12 @@ public class Kid {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
+    }
 }

@@ -6,7 +6,7 @@ public class MascotDetailsDto {
     private String headDetail;
     private String neckDetail;
     private String feetDetail;
-    private KidDto kid;
+    private int kid;
 
     public int getId() {
         return id;
@@ -48,11 +48,11 @@ public class MascotDetailsDto {
         this.feetDetail = feetDetail;
     }
 
-    public KidDto getKid() {
+    public int getKid() {
         return kid;
     }
 
-    public void setKid(KidDto kid) {
+    public void setKid(int kid) {
         this.kid = kid;
     }
 }

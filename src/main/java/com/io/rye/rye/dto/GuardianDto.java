@@ -4,17 +4,18 @@ import java.util.Set;
 
 public class GuardianDto {
 
-    private String id;
+    private int id;
     private String username;
     private String password;
+    private String email;
     private String familyMember;
-    private Set<KidDto> kids;
+    private Set<Integer> kids;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,11 +43,19 @@ public class GuardianDto {
         this.familyMember = familyMember;
     }
 
-    public Set<KidDto> getKids() {
+    public Set<Integer> getKids() {
         return kids;
     }
 
-    public void setKids(Set<KidDto> kids) {
+    public void setKids(Set<Integer> kids) {
         this.kids = kids;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

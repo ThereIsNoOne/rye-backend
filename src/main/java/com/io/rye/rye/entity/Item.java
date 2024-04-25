@@ -34,4 +34,12 @@ public class Item {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public Set<Kid> getKid() {
+        return kid;
+    }
+
+    public void setKid(Set<Kid> kid) {
+        this.kid = kid;
+    }
 }

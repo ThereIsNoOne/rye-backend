@@ -9,7 +9,7 @@ public class ResultDto {
     private int result;
     private Date date;
     private int reward;
-    private KidDto kid;
+    private int kid;
 
     public int getId() {
         return id;
@@ -59,11 +59,11 @@ public class ResultDto {
         this.reward = reward;
     }
 
-    public KidDto getKid() {
+    public int getKid() {
         return kid;
     }
 
-    public void setKid(KidDto kid) {
+    public void setKid(int kid) {
         this.kid = kid;
     }
 }

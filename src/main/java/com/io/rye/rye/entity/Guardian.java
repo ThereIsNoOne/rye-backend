@@ -65,4 +65,12 @@ public class Guardian {
     public void setFamilyMember(String familyMember) {
         this.familyMember = familyMember;
     }
+
+    public Set<Kid> getKids() {
+        return kids;
+    }
+
+    public void setKids(Set<Kid> kids) {
+        this.kids = kids;
+    }
 }

@@ -5,7 +5,7 @@ import java.util.Set;
 public class ItemDto {
     private int id;
     private int price;
-    private Set<KidDto> kids;
+    private Set<Integer> kids;
 
     public int getId() {
         return id;
@@ -23,11 +23,11 @@ public class ItemDto {
         this.price = price;
     }
 
-    public Set<KidDto> getKids() {
+    public Set<Integer> getKids() {
         return kids;
     }
 
-    public void setKids(Set<KidDto> kids) {
+    public void setKids(Set<Integer> kids) {
         this.kids = kids;
     }
 }

@@ -8,7 +8,7 @@ public class ParentTaskDto {
     private int length;
     private int duration;
     private Date date;
-    private KidDto kid;
+    private int kid;
 
     public int getId() {
         return id;
@@ -50,11 +50,11 @@ public class ParentTaskDto {
         this.date = date;
     }
 
-    public KidDto getKid() {
+    public int getKid() {
         return kid;
     }
 
-    public void setKid(KidDto kid) {
+    public void setKid(int kid) {
         this.kid = kid;
     }
 }
