@@ -1,9 +1,9 @@
 package com.io.rye.rye.mappers;
 
 import com.io.rye.rye.dto.GuardianDto;
+import com.io.rye.rye.dto.GuardianRegisterForm;
 import com.io.rye.rye.entity.Guardian;
 import com.io.rye.rye.entity.Kid;
-import com.io.rye.rye.repository.GuardianRepository;
 import com.io.rye.rye.repository.KidRepository;
 
 import java.util.stream.Collectors;
@@ -48,5 +48,15 @@ public class GuardianMapper {
                 .map(Kid::getId)
                 .collect(Collectors.toSet()));
         return guardianDto;
+    }
+
+    public static Guardian fromRegisterForm(GuardianRegisterForm guardianRegisterForm) {
+        Guardian guardian = new Guardian();
+        guardian.setUsername(guardianRegisterForm.getUsername());
+        guardian.setPassword(guardianRegisterForm.getPassword());
+        guardian.setEmail(guardianRegisterForm.getEmail());
+        guardian.setFamilyMember(guardianRegisterForm.getFamilyMember());
+        guardian.setKids(null);
+        return guardian;
     }
 }
