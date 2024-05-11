@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/kid")
 public class KidController {
     private final KidService kidService;
