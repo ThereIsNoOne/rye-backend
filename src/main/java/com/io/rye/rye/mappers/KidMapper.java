@@ -1,7 +1,6 @@
 package com.io.rye.rye.mappers;
 
 import com.io.rye.rye.dto.KidDto;
-import com.io.rye.rye.dto.KidRegisterForm;
 import com.io.rye.rye.entity.Guardian;
 import com.io.rye.rye.entity.Item;
 import com.io.rye.rye.entity.Kid;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class KidMapper {
-
     public static Kid fromDto(KidDto kidDto) {
         Kid kid = new Kid();
 
@@ -79,15 +77,5 @@ public class KidMapper {
         );
 
         return kidDto;
-    }
-
-    public static Kid fromRegisterForm(KidRegisterForm kidRegisterForm) {
-        Kid kid = new Kid();
-        kid.setUsername(kidRegisterForm.getUsername());
-        kid.setPassword(kidRegisterForm.getPassword());
-        kid.setGuardians(null);
-        kid.setBalance(0);
-        kid.setItems(null);
-        return kid;
     }
 }

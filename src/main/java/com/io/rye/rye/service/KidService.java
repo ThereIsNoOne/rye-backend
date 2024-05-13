@@ -4,7 +4,6 @@ import com.io.rye.rye.dto.KidRegisterForm;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Kid;
 import com.io.rye.rye.exception.InvalidInputException;
-import com.io.rye.rye.mappers.KidMapper;
 import com.io.rye.rye.repository.KidRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -40,7 +39,7 @@ public class KidService {
                     .issuedAt(new Date(timeMillis))
                     .expiration(new Date(timeMillis + 15 * 60 * 1000))
                     .claim("id", kid.getId())
-                    .claim("role", "KID")
+                    //.claim("role", "KID")
                     .signWith(SignatureAlgorithm.HS256, key)
                     .compact();
             return token;
@@ -50,7 +49,17 @@ public class KidService {
     }
 
     public Kid registerKid(KidRegisterForm kidRegisterForm) throws InvalidInputException {
-        Kid kid = KidMapper.fromRegisterForm(kidRegisterForm);
+        Kid kid = fromRegisterForm(kidRegisterForm);
         return kidRepository.save(kid);
+    }
+
+    private Kid fromRegisterForm(KidRegisterForm kidRegisterForm) {
+        var kid = new Kid();
+        kid.setUsername(kidRegisterForm.getUsername());
+        kid.setPassword(passwordEncoder.encode(kidRegisterForm.getPassword()));
+        kid.setGuardians(null);
+        kid.setBalance(0);
+        kid.setItems(null);
+        return kid;
     }
 }

@@ -49,14 +49,4 @@ public class GuardianMapper {
                 .collect(Collectors.toSet()));
         return guardianDto;
     }
-
-    public static Guardian fromRegisterForm(GuardianRegisterForm guardianRegisterForm) {
-        Guardian guardian = new Guardian();
-        guardian.setUsername(guardianRegisterForm.getUsername());
-        guardian.setPassword(guardianRegisterForm.getPassword());
-        guardian.setEmail(guardianRegisterForm.getEmail());
-        guardian.setFamilyMember(guardianRegisterForm.getFamilyMember());
-        guardian.setKids(null);
-        return guardian;
-    }
 }

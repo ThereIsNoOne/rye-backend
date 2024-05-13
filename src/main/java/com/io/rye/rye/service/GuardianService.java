@@ -4,7 +4,6 @@ import com.io.rye.rye.dto.GuardianRegisterForm;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Guardian;
 import com.io.rye.rye.exception.InvalidInputException;
-import com.io.rye.rye.mappers.GuardianMapper;
 import com.io.rye.rye.repository.GuardianRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -50,7 +49,17 @@ public class GuardianService {
     }
 
     public Guardian registerGuardian(GuardianRegisterForm guardianRegisterForm) throws InvalidInputException {
-        Guardian guardian = GuardianMapper.fromRegisterForm(guardianRegisterForm);
+        Guardian guardian = fromRegisterForm(guardianRegisterForm);
         return guardianRepository.save(guardian);
+    }
+
+    private Guardian fromRegisterForm(GuardianRegisterForm guardianRegisterForm) {
+        Guardian guardian = new Guardian();
+        guardian.setUsername(guardianRegisterForm.getUsername());
+        guardian.setPassword(passwordEncoder.encode(guardianRegisterForm.getPassword()));
+        guardian.setEmail(guardianRegisterForm.getEmail());
+        guardian.setFamilyMember(guardianRegisterForm.getFamilyMember());
+        guardian.setKids(null);
+        return guardian;
     }
 }

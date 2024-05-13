@@ -30,6 +30,8 @@ public class SecurityConfig {
                                         .requestMatchers("kid/login").permitAll()
                                         .requestMatchers("guardian/register").permitAll()
                                         .requestMatchers("kid/register").permitAll()
+                                        .requestMatchers("result/add").permitAll()
+                                        .requestMatchers("result/getAll").permitAll()
 
 
                 )
