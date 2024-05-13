@@ -30,6 +30,8 @@ public class SecurityConfig {
                                         .requestMatchers("kid/login").permitAll()
                                         .requestMatchers("guardian/register").permitAll()
                                         .requestMatchers("kid/register").permitAll()
+                                        .requestMatchers("pic/**").permitAll()
+                                        .requestMatchers("/emotion/**").permitAll()
                                         .requestMatchers("mimic/**").permitAll() // TODO: change for kid role
 
 

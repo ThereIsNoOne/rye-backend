@@ -1,9 +1,11 @@
 package com.io.rye.rye.service;
 
+import com.io.rye.rye.dto.RateDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,19 +19,19 @@ public class MimicPictureService {
     }
 
 
-    public ResponseEntity<String> ratePicture(MultipartFile file) {
+    public RateDto ratePicture(MultipartFile file) {
         if (file.isEmpty()) {
-            return new ResponseEntity<>("File is empty", HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no file to rate");
         }
 
-        // TODO: Process file
+        // TODO: Process file with AWS
         try {
             Path path = Paths.get("./src/main/resources/images", file.getOriginalFilename());
             Files.write(path, file.getBytes());
 
-            return new ResponseEntity<>("File uploaded successfully", HttpStatus.OK);
+            return new RateDto(0, "HAPPY", "SAD");  // TODO: Fill with data from AWS
         } catch (Exception e) {
-            return new ResponseEntity<>("Failed to upload file", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to rate photo");
         }
     }
 }
