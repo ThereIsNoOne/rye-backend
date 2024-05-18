@@ -32,8 +32,8 @@ public class SecurityConfig {
                                         .requestMatchers("kid/register").permitAll()
                                         .requestMatchers("result/add").permitAll()
                                         .requestMatchers("result/getAll").permitAll()
-
-
+                                        .requestMatchers("aws/extractEmotion").permitAll()
+                                        .requestMatchers("stats/**").permitAll()
                 )
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

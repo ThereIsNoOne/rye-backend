@@ -27,9 +27,9 @@ public class ResultController {
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public @ResponseBody Result addResult(@RequestBody ResultDto resultDto) throws ResponseStatusException {
+    public @ResponseBody Result addResult(@RequestHeader HttpHeaders headers, @RequestBody ResultDto resultDto) throws ResponseStatusException {
         try {
-            return resultService.addResult(resultDto);
+            return resultService.addResult(resultDto, tokenUtils.getIdFromToken(headers));
         } catch (InvalidInputException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage(), e);
         }

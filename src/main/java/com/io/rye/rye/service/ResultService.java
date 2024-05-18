@@ -8,7 +8,6 @@ import com.io.rye.rye.mappers.ResultMapper;
 import com.io.rye.rye.repository.KidRepository;
 import com.io.rye.rye.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,17 +17,14 @@ public class ResultService {
 
     private final KidRepository kidRepository;
 
-    @Value("${jwt.token.key}")
-    private String key;
-
     @Autowired
     public ResultService(ResultRepository resultRepository, KidRepository kidRepository) {
         this.resultRepository = resultRepository;
         this.kidRepository = kidRepository;
     }
 
-    public Result addResult(ResultDto resultDto) throws InvalidInputException {
-        Result result = ResultMapper.fromDto(resultDto, kidRepository);
+    public Result addResult(ResultDto resultDto, String id) throws InvalidInputException {
+        Result result = ResultMapper.fromDto(resultDto, kidRepository, Integer.parseInt(id));
         return resultRepository.save(result);
     }
 
