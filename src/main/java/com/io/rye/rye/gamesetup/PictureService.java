@@ -19,6 +19,7 @@ public class PictureService {
     public PictureDto fetchRandom() {
         PictureDto pictureDto = new PictureDto();
         JSONObject response = sendRequest();
+
         JSONObject body = response.getJSONObject("body");
         pictureDto.setEmotion(body.getString("emotion"));
         pictureDto.setUrl(body.getString("image_url"));
@@ -36,6 +37,7 @@ public class PictureService {
     public Iterable<PictureDto> fetch(int quantity) {
         List<PictureDto> pictureDtos = new LinkedList<>();
         for (int i = 0; i < quantity; i++) {
+            //TODO: Uncomment this to enable full functionality
 //            pictureDtos.add(fetchRandom());
 
             // TODO: For test purposes

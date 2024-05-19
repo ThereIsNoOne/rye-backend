@@ -32,8 +32,10 @@ public class KidService {
     }
 
     public String kidLogin(LoginForm loginForm) {
+
         Kid kid = kidRepository.findByUsername(loginForm.getLogin()).get();
         String password = kid.getPassword();
+
         if (passwordEncoder.matches(loginForm.getPassword(), password)) {
             long timeMillis = System.currentTimeMillis();
             String token = Jwts.builder()
@@ -51,6 +53,9 @@ public class KidService {
 
     public Kid registerKid(KidRegisterForm kidRegisterForm) throws InvalidInputException {
         Kid kid = KidMapper.fromRegisterForm(kidRegisterForm);
+
+        kid.setPassword(passwordEncoder.encode(kidRegisterForm.getPassword()));
+
         return kidRepository.save(kid);
     }
 }
