@@ -30,11 +30,10 @@ public class SecurityConfig {
                                         .requestMatchers("kid/login").permitAll()
                                         .requestMatchers("guardian/register").permitAll()
                                         .requestMatchers("kid/register").permitAll()
-                                        .requestMatchers("pic/**").permitAll()
-                                        .requestMatchers("/emotion/**").permitAll()
-                                        .requestMatchers("mimic/**").permitAll() // TODO: change for kid role
-
-
+                                        .requestMatchers("result/add").permitAll()
+                                        .requestMatchers("result/getAll").permitAll()
+                                        .requestMatchers("aws/extractEmotion").permitAll()
+                                        .requestMatchers("stats/**").permitAll()
                 )
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

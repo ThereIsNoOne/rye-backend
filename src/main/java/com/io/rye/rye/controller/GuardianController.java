@@ -1,6 +1,5 @@
 package com.io.rye.rye.controller;
 
-import com.io.rye.rye.dto.GuardianDto;
 import com.io.rye.rye.dto.GuardianRegisterForm;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Guardian;
