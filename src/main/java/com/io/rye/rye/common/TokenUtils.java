@@ -1,4 +1,4 @@
-package com.io.rye.rye;
+package com.io.rye.rye.common;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

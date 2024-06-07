@@ -1,6 +1,6 @@
 package com.io.rye.rye.controller;
 
-import com.io.rye.rye.TokenUtils;
+import com.io.rye.rye.common.TokenUtils;
 import com.io.rye.rye.entity.Result;
 import com.io.rye.rye.exception.InvalidInputException;
 import com.io.rye.rye.service.StatisticsService;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/stats")
 public class StatisticsController {
     private final StatisticsService statisticsService;

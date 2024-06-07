@@ -40,9 +40,9 @@ public class KidService {
             long timeMillis = System.currentTimeMillis();
             String token = Jwts.builder()
                     .issuedAt(new Date(timeMillis))
-                    .expiration(new Date(timeMillis + 15 * 60 * 1000))
+                    .expiration(new Date(timeMillis + 24 * 60 * 60 * 1000))
                     .claim("id", kid.getId())
-                    .claim("role", "KID")
+                    .claim("role", "ROLE_KID")
                     .signWith(SignatureAlgorithm.HS256, key)
                     .compact();
             return token;

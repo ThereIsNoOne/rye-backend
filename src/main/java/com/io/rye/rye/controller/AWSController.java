@@ -1,6 +1,8 @@
 package com.io.rye.rye.controller;
 
 
+import com.io.rye.rye.dto.RateDto;
+import com.io.rye.rye.dto.ResultDto;
 import com.io.rye.rye.service.AWSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/aws")
 public class AWSController {
 
@@ -23,14 +26,16 @@ public class AWSController {
     }
 
     @PostMapping("/extractEmotion")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<String> getEmotion(@RequestPart MultipartFile file) throws ResponseStatusException {
+    @ResponseStatus(code = HttpStatus.OK)
+    public @ResponseBody RateDto getEmotion(@RequestBody MultipartFile file) throws ResponseStatusException {
         try {
-            String emotion = awsService.extractEmotion(file);
-            if (emotion == null) {
-                return new ResponseEntity<>("Invalid request", HttpStatus.CONFLICT);
+            System.out.println("start");
+            System.out.println(file.getOriginalFilename());
+            RateDto result = awsService.extractEmotion(file);
+            if (result == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Emotion");
             } else {
-                return new ResponseEntity<>(emotion, HttpStatus.OK);
+                return result;
             }
         } catch (RuntimeException | IOException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage(), e);

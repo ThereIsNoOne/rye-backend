@@ -30,9 +30,11 @@ public class SecurityConfig {
                                         .requestMatchers("kid/login").permitAll()
                                         .requestMatchers("guardian/register").permitAll()
                                         .requestMatchers("kid/register").permitAll()
+                                        .requestMatchers("pic/**").authenticated()
+                                        .requestMatchers("emotion/**").authenticated()
                                         .requestMatchers("result/add").permitAll()
                                         .requestMatchers("result/getAll").permitAll()
-                                        .requestMatchers("aws/extractEmotion").permitAll()
+                                        .requestMatchers("aws/extractEmotion").hasRole("KID")
                                         .requestMatchers("stats/**").permitAll()
                 )
                 .sessionManagement(sessionManagement ->

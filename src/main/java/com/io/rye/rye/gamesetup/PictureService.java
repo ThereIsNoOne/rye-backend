@@ -38,15 +38,15 @@ public class PictureService {
         List<PictureDto> pictureDtos = new LinkedList<>();
         for (int i = 0; i < quantity; i++) {
             //TODO: Uncomment this to enable full functionality
-//            pictureDtos.add(fetchRandom());
+            pictureDtos.add(fetchRandom());
 
             // TODO: For test purposes
-            pictureDtos.add(
-                    new PictureDto() {{
-                        setUrl("https://cdn.britannica.com/55/75855-050-3D52AB80/giraffe-Kenya.jpg");
-                        setEmotion("HAPPY");
-                    }}
-            );
+//            pictureDtos.add(
+//                    new PictureDto() {{
+//                        setUrl("https://cdn.britannica.com/55/75855-050-3D52AB80/giraffe-Kenya.jpg");
+//                        setEmotion("HAPPY");
+//                    }}
+//            );
         }
         return pictureDtos;
     }

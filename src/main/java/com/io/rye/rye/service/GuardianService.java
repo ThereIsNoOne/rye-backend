@@ -39,7 +39,7 @@ public class GuardianService {
                     .issuedAt(new Date(timeMillis))
                     .expiration(new Date(timeMillis + 15 * 60 * 1000))
                     .claim("id", guardian.getId())
-                    .claim("role", "GUARDIAN")
+                    .claim("role", "ROLE_GUARDIAN")
                     .signWith(SignatureAlgorithm.HS256, key)
                     .compact();
             return token;
