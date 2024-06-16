@@ -71,6 +71,7 @@ public class StatisticsController {
     @ResponseStatus(code = HttpStatus.OK)
     public @ResponseBody Iterable<Result> getResultsByMode(@RequestHeader HttpHeaders headers,
                                                            @RequestParam("mode") String mode) throws ResponseStatusException {
+        System.out.println(mode);
         try {
             return statisticsService.getResultsByMode(mode, tokenUtils.getIdFromToken(headers));
         } catch (InvalidInputException e) {

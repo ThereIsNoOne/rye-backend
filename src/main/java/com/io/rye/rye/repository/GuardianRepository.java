@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface GuardianRepository extends CrudRepository<Guardian, Integer> {
     @Query("SELECT g FROM Guardian g WHERE g.username = :username")
     Optional<Guardian> findByUsername(String username);
+
+    Optional<Guardian> findGuardianById(int id);
 }

@@ -49,8 +49,8 @@ public class AWSService {
 
 
         RateDto rate = new RateDto();
-        rate.setCorrectAnswer(topEmotion);
-        rate.setUserAnswer(file.getOriginalFilename().split("\\.")[0]);
+        rate.setUserAnswer(topEmotion);
+        rate.setCorrectAnswer(file.getOriginalFilename().split("\\.")[0]);
         rate.setScore(rate.getCorrectAnswer().equals(rate.getUserAnswer()) ? 1 : 0);
 
         return rate;

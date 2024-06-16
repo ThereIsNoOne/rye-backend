@@ -27,6 +27,7 @@ public class SecurityConfig {
                                 authorizationManagerRequestMatcherRegistry
                                         .requestMatchers("admin/login").permitAll()
                                         .requestMatchers("guardian/login").permitAll()
+                                        .requestMatchers("guardian/kids").authenticated()
                                         .requestMatchers("kid/login").permitAll()
                                         .requestMatchers("guardian/register").permitAll()
                                         .requestMatchers("kid/register").permitAll()

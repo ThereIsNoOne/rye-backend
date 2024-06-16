@@ -1,12 +1,14 @@
 package com.io.rye.rye.controller;
 
 
+import com.io.rye.rye.common.TokenUtils;
 import com.io.rye.rye.dto.KidRegisterForm;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Kid;
 import com.io.rye.rye.exception.InvalidInputException;
 import com.io.rye.rye.service.KidService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/kid")
 public class KidController {
     private final KidService kidService;
+    private final TokenUtils tokenUtils;
 
     @Autowired
-    public KidController(KidService kidService) {
+    public KidController(KidService kidService, TokenUtils tokenUtils) {
         this.kidService = kidService;
+        this.tokenUtils = tokenUtils;
     }
 
     @PostMapping("/login")
@@ -35,7 +39,10 @@ public class KidController {
 
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public @ResponseBody Kid register(@RequestBody KidRegisterForm kidRegisterForm) throws ResponseStatusException {
+    public @ResponseBody Kid register(@RequestBody KidRegisterForm kidRegisterForm, @RequestHeader HttpHeaders httpHeaders) throws ResponseStatusException {
+        int id = Integer.parseInt(tokenUtils.getIdFromToken(httpHeaders));
+        System.out.println(id);
+        kidRegisterForm.setParentId(id);
         try {
             return kidService.registerKid(kidRegisterForm);
         } catch (InvalidInputException e) {

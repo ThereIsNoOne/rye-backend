@@ -29,8 +29,6 @@ public class AWSController {
     @ResponseStatus(code = HttpStatus.OK)
     public @ResponseBody RateDto getEmotion(@RequestBody MultipartFile file) throws ResponseStatusException {
         try {
-            System.out.println("start");
-            System.out.println(file.getOriginalFilename());
             RateDto result = awsService.extractEmotion(file);
             if (result == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Emotion");

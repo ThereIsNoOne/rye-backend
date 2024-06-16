@@ -1,9 +1,11 @@
 package com.io.rye.rye.service;
 
 import com.io.rye.rye.dto.GuardianRegisterForm;
+import com.io.rye.rye.dto.KidDto;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Guardian;
 import com.io.rye.rye.exception.InvalidInputException;
+import com.io.rye.rye.mappers.KidMapper;
 import com.io.rye.rye.repository.GuardianRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -61,5 +63,14 @@ public class GuardianService {
         guardian.setFamilyMember(guardianRegisterForm.getFamilyMember());
         guardian.setKids(null);
         return guardian;
+    }
+
+    public Iterable<KidDto> getKids(int id) {
+        Guardian guardian = guardianRepository.findGuardianById(id).get();
+        System.out.println(id);
+        System.out.println(guardian.getUsername());
+        System.out.println(guardian.getKids());
+        return guardian.getKids().stream().map(KidMapper::toDto).toList();
+
     }
 }

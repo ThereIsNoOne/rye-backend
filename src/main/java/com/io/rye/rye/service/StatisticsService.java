@@ -44,9 +44,9 @@ public class StatisticsService {
     }
 
     public long getGameCountByModeAndDate(String mode, String time, String id) throws InvalidInputException {
-        if (mode.equalsIgnoreCase("mimic-from-name")
-                || mode.equalsIgnoreCase("mimic-from-picture")
-                || mode.equalsIgnoreCase("recognize-from-picture")
+        if (mode.equalsIgnoreCase("MIMIC_FROM_PICTURE")
+                || mode.equalsIgnoreCase("MIMIC_FROM_NAME")
+                || mode.equalsIgnoreCase("RECOGNIZE_FROM_PICTURE")
                 && (time.equalsIgnoreCase("week")
                 || time.equalsIgnoreCase("month")
                 || time.equalsIgnoreCase("year"))) {
@@ -72,9 +72,9 @@ public class StatisticsService {
     }
 
     public Iterable<Result> getResultsByMode(String mode, String id) throws InvalidInputException {
-        if (mode.equalsIgnoreCase("mimic-from-name")
-                || mode.equalsIgnoreCase("mimic-from-picture")
-                || mode.equalsIgnoreCase("recognize-from-picture")) {
+        if (mode.equalsIgnoreCase("MIMIC_FROM_PICTURE")
+                || mode.equalsIgnoreCase("MIMIC_FROM_NAME")
+                || mode.equalsIgnoreCase("RECOGNIZE_FROM_PICTURE")) {
             return resultRepository.findByKidAndMode(id, mode);
         }
         else {
@@ -94,9 +94,9 @@ public class StatisticsService {
     }
 
     public Iterable<Result> getResultsByModeAndDate(String mode, String time, String id) throws InvalidInputException {
-        if (mode.equalsIgnoreCase("mimic-from-name")
-                || mode.equalsIgnoreCase("mimic-from-picture")
-                || mode.equalsIgnoreCase("recognize-from-picture")
+        if (mode.equalsIgnoreCase("MIMIC_FROM_PICTURE")
+                || mode.equalsIgnoreCase("MIMIC_FROM_NAME")
+                || mode.equalsIgnoreCase("RECOGNIZE_FROM_PICTURE")
                 && (time.equalsIgnoreCase("week")
                 || time.equalsIgnoreCase("month")
                 || time.equalsIgnoreCase("year"))) {
