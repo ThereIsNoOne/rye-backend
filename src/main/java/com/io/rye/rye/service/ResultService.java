@@ -3,7 +3,6 @@ package com.io.rye.rye.service;
 
 import com.io.rye.rye.dto.ResultDto;
 import com.io.rye.rye.entity.Result;
-import com.io.rye.rye.exception.InvalidInputException;
 import com.io.rye.rye.mappers.ResultMapper;
 import com.io.rye.rye.repository.KidRepository;
 import com.io.rye.rye.repository.ResultRepository;
@@ -23,12 +22,12 @@ public class ResultService {
         this.kidRepository = kidRepository;
     }
 
-    public Result addResult(ResultDto resultDto, String id) throws InvalidInputException {
+    public Result addResult(ResultDto resultDto, String id) {
         Result result = ResultMapper.fromDto(resultDto, kidRepository, Integer.parseInt(id));
         return resultRepository.save(result);
     }
 
-    public Iterable<Result> getAllResults(String id) throws InvalidInputException {
+    public Iterable<Result> getAllResults(String id) {
         return resultRepository.findByKid(id);
     }
 }

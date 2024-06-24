@@ -4,13 +4,11 @@ package com.io.rye.rye.controller;
 import com.io.rye.rye.dto.KidRegisterForm;
 import com.io.rye.rye.dto.LoginForm;
 import com.io.rye.rye.entity.Kid;
-import com.io.rye.rye.exception.InvalidInputException;
 import com.io.rye.rye.service.KidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @CrossOrigin
@@ -35,11 +33,7 @@ public class KidController {
 
     @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public @ResponseBody Kid register(@RequestBody KidRegisterForm kidRegisterForm) throws ResponseStatusException {
-        try {
-            return kidService.registerKid(kidRegisterForm);
-        } catch (InvalidInputException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage(), e);
-        }
+    public @ResponseBody Kid register(@RequestBody KidRegisterForm kidRegisterForm){
+        return kidService.registerKid(kidRegisterForm);
     }
 }
