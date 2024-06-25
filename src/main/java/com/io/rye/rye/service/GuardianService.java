@@ -39,7 +39,7 @@ public class GuardianService {
             long timeMillis = System.currentTimeMillis();
             String token = Jwts.builder()
                     .issuedAt(new Date(timeMillis))
-                    .expiration(new Date(timeMillis + 15 * 60 * 1000))
+                    .expiration(new Date(timeMillis + 24 * 60 * 60 * 1000))
                     .claim("id", guardian.getId())
                     .claim("role", "ROLE_GUARDIAN")
                     .signWith(SignatureAlgorithm.HS256, key)
